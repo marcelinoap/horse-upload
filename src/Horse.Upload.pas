@@ -203,12 +203,12 @@ var
   LContent: TObject;
   LUploadConfg : TUploadConfig;
 begin
-  LWebRequest := THorseHackRequest(Req).GetWebRequest;
+  LWebRequest := THorseRequest(Req).RawWebRequest;
 
   Next;
 
-  LWebResponse := THorseHackResponse(Res).GetWebResponse;
-  LContent := THorseHackResponse(Res).GetContent;
+  LWebResponse := THorseResponse(Res).RawWebResponse;
+  LContent := THorseResponse(Res).Content;
 
   if Assigned(LContent) and LContent.InheritsFrom(TUploadConfig) then
   begin
